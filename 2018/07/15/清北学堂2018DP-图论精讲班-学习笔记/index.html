@@ -18,7 +18,7 @@
 <ul>
 <li><p>定义状态<br>dp[i][j]表示用不超过j的数来组成i</p>
 </li>
-<li><p>状态转移<br>$i<j\quad dp[i][j]="dp[i][i]$" $i="j\quad">j\quad dp[i][j]=dp[i-j][j-1]+dp[i][j-1]$</j\quad></p>
+<li><p>状态转移<br>$i<j \quad="" dp[i][j]="dp[i][i]$" $i="j">j \quad dp[i][j]=dp[i-j][j-1]+dp[i][j-1]$</j></p>
 </li>
 </ul>
 <h3 id="例4"><a href="#例4" class="headerlink" title="例4"></a>例4</h3><p>一个人站在楼梯的第一级上，每次他可以向上走1~m级。有某些级楼梯是坏的，不能走上去。而且连续走了k次m级之后你接下来的一步只能走1级。问走到第N级的方案数。</p>
@@ -26,7 +26,7 @@
 <ul>
 <li><p>定义状态<br>dp[i][j]在第i级台阶上，连续走了j次m级</p>
 </li>
-<li><p>状态转移<br>$\sum<em>{j=1}^{m-1}dp[i+j][0]+=\sum</em>{l=0}^{k-1}dp[i][l]$(我自己按老师的意思写的方程我自己都看不懂……)<br>$dp[i+1][0]+=dp[i][k]$<br>$dp[i+m][l+1]+=f[i][l]\;(l\neq k)$</p>
+<li><p>状态转移<br>$ \sum<em>{j=1}^{m-1}dp[i+j][0]+= \sum</em>{l=0}^{k-1}dp[i][l]$(我自己按老师的意思写的方程我自己都看不懂……)<br>$dp[i+1][0]+=dp[i][k]$<br>$dp[i+m][l+1]+=f[i][l]\;(l\neq k)$</p>
 </li>
 </ul>
 <h3 id="例5"><a href="#例5" class="headerlink" title="例5"></a>例5</h3><p><a href="http://codeforces.com/problemset/problem/467/C" target="_blank" rel="noopener">Codeforces 467C George and Job</a></p>
