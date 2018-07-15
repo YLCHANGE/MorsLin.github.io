@@ -1,0 +1,67 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="清北学堂2018DP&amp;图论精讲班 学习笔记"><meta name="keywords" content="学习笔记"><meta name="author" content="MorsLin,undefined"><meta name="copyright" content="MorsLin"><title>清北学堂2018DP&amp;图论精讲班 学习笔记 | 默思·朸安</title><link rel="shortcut icon" href="/my-favicon.ico"><link rel="stylesheet" href="/css/index.css?version=1.5.6"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css?version=1.5.6"><link rel="dns-prefetch" href="https://cdn.staticfile.org"><link rel="dns-prefetch" href="https://cdn.bootcss.com"><link rel="dns-prefetch" href="https://creativecommons.org"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容:${query}"}},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  }
+} </script></head><body><canvas class="fireworks"></canvas><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar"><div class="toggle-sidebar-info text-center"><span data-toggle="切换文章详情">切换站点概览</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Day1"><span class="toc-number">1.</span> <span class="toc-text">Day1</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#上午"><span class="toc-number">1.1.</span> <span class="toc-text">上午</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#例1"><span class="toc-number">1.1.1.</span> <span class="toc-text">例1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#例2"><span class="toc-number">1.1.2.</span> <span class="toc-text">例2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#例7"><span class="toc-number">1.1.3.</span> <span class="toc-text">例7</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#例3"><span class="toc-number">1.1.4.</span> <span class="toc-text">例3</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#例4"><span class="toc-number">1.1.5.</span> <span class="toc-text">例4</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#例5"><span class="toc-number">1.1.6.</span> <span class="toc-text">例5</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#例6"><span class="toc-number">1.1.7.</span> <span class="toc-text">例6</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#下午"><span class="toc-number">1.2.</span> <span class="toc-text">下午</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#考试题目"><span class="toc-number">1.2.0.1.</span> <span class="toc-text">考试题目</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#官方题解"><span class="toc-number">1.2.0.2.</span> <span class="toc-text">官方题解</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#吐槽"><span class="toc-number">1.2.1.</span> <span class="toc-text">吐槽</span></a></li></ol></li></ol></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="https://s1.ax2x.com/2018/07/13/qMrQ6.png"></div><div class="author-info__name text-center">MorsLin</div><div class="author-info__description text-center"></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">文章</span><span class="pull-right">2</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">标签</span><span class="pull-right">2</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">分类</span><span class="pull-right">3</span></a></div><hr><div class="author-info-links"><div class="author-info-links__title text-center">Links</div><a class="author-info-links__name text-center" href="https://rqy.moe/" target="_blank">_rqy</a><a class="author-info-links__name text-center" href="http://www.cnblogs.com/MisakaAzusa" target="_blank">zzc</a><a class="author-info-links__name text-center" href="http://www.cnblogs.com/Lance1ot" target="_blank">Lance1ot</a><a class="author-info-links__name text-center" href="http://www.cnblogs.com/pks-t/" target="_blank">Flower_pks</a><a class="author-info-links__name text-center" href="http://www.cnblogs.com/zzh666" target="_blank">ZZH</a></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(https://s1.ax2x.com/2018/07/13/qOdhK.jpg)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">默思·朸安</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus"><a class="site-page social-icon search"><i class="fa fa-search"></i><span> 搜索</span></a><a class="site-page" href="/">Home</a><a class="site-page" href="/archives">Archives</a><a class="site-page" href="/tags">Tags</a><a class="site-page" href="/categories">Categories</a><a class="site-page" href="/about">About</a></span></div><div id="post-info"><div id="post-title">清北学堂2018DP&amp;图论精讲班 学习笔记</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2018-07-15</time><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/培训/">培训</a><i class="fa fa-angle-right" aria-hidden="true"></i><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/培训/清北学堂/">清北学堂</a></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><h1 id="Day1"><a href="#Day1" class="headerlink" title="Day1"></a>Day1</h1><h2 id="上午"><a href="#上午" class="headerlink" title="上午"></a>上午</h2><p>讲的挺基础的……不过还是有些地方不太明白</p>
+<h3 id="例1"><a href="#例1" class="headerlink" title="例1"></a>例1</h3><p> 给定一个数n，求将n划分成若干个正整数的方案数。</p>
+<h3 id="例2"><a href="#例2" class="headerlink" title="例2"></a>例2</h3><p> 数字三角形</p>
+<h3 id="例7"><a href="#例7" class="headerlink" title="例7"></a>例7</h3><p>最长不下降子序列</p>
+<p><strong>以上太过于基础，不做深入讨论</strong></p>
+<hr>
+<h3 id="例3"><a href="#例3" class="headerlink" title="例3"></a>例3</h3><p>给定一个数n，求将n划分成若干个正整数的方案数。</p>
+<p>题解：</p>
+<ul>
+<li><p>定义状态<br>dp[i][j]表示用不超过j的数来组成i</p>
+</li>
+<li><p>状态转移<br>$i<j\quad dp[i][j]="dp[i][i]$" $i="j\quad">j\quad dp[i][j]=dp[i-j][j-1]+dp[i][j-1]$</j\quad></p>
+</li>
+</ul>
+<h3 id="例4"><a href="#例4" class="headerlink" title="例4"></a>例4</h3><p>一个人站在楼梯的第一级上，每次他可以向上走1~m级。有某些级楼梯是坏的，不能走上去。而且连续走了k次m级之后你接下来的一步只能走1级。问走到第N级的方案数。</p>
+<p>题解：</p>
+<ul>
+<li><p>定义状态<br>dp[i][j]在第i级台阶上，连续走了j次m级</p>
+</li>
+<li><p>状态转移<br>$\sum<em>{j=1}^{m-1}dp[i+j][0]+=\sum</em>{l=0}^{k-1}dp[i][l]$(我自己按老师的意思写的方程我自己都看不懂……)<br>$dp[i+1][0]+=dp[i][k]$<br>$dp[i+m][l+1]+=f[i][l]\;(l\neq k)$</p>
+</li>
+</ul>
+<h3 id="例5"><a href="#例5" class="headerlink" title="例5"></a>例5</h3><p><a href="http://codeforces.com/problemset/problem/467/C" target="_blank" rel="noopener">Codeforces 467C George and Job</a></p>
+<p>给定一个长度为n的序列，从序列中选出k个不重叠且连续的m个数，要求和最大。<br>1&lt;=m*k&lt;=n&lt;=5000</p>
+<p>题解：</p>
+<ul>
+<li><p>定义状态<br>sum[]为前缀和，dp[i][j]选了j段，以i为结尾</p>
+</li>
+<li><p>状态转移<br>$dp[i][j]=max(dp[i-m][j-1]+sum[i]-sum[i-m],dp[i-1][j])$</p>
+</li>
+</ul>
+<h3 id="例6"><a href="#例6" class="headerlink" title="例6"></a>例6</h3><p><a href="https://www.51nod.com/onlineJudge/questionCode.html#!problemId=1354" target="_blank" rel="noopener">51nod 1354 选数字</a></p>
+<p><strong>不会，全程懵逼</strong></p>
+<h2 id="下午"><a href="#下午" class="headerlink" title="下午"></a>下午</h2><p>考试，估计要爆零……</p>
+<p>嗯，60分，还不错——至少比想象中的高</p>
+<h4 id="考试题目"><a href="#考试题目" class="headerlink" title="考试题目"></a><a href="https://files.cnblogs.com/files/wxl-Ezio/problemset.pdf" target="_blank" rel="noopener">考试题目</a></h4><h4 id="官方题解"><a href="#官方题解" class="headerlink" title="官方题解"></a><a href="https://files.cnblogs.com/files/wxl-Ezio/sol.pdf" target="_blank" rel="noopener">官方题解</a></h4><h3 id="吐槽"><a href="#吐槽" class="headerlink" title="吐槽"></a>吐槽</h3><ul>
+<li><p>T1<br>只能说我太菜了，根本不会DP，爆搜+数据特判，40分滚粗</p>
+</li>
+<li><p>T2<br>我会最短路，怎么才20分？好吧，那30%$k=1$的测试点我承认我删边删错了。题目是双向边，我也是按双向边存的，结果删的时候只删了一条边……</p>
+</li>
+<li><p>T3<br>不会，讲了也不会 (｀＾´)ノ</p>
+</li>
+</ul>
+</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">MorsLin</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://yoursite.com/2018/07/15/清北学堂2018DP-图论精讲班-学习笔记/">http://yoursite.com/2018/07/15/清北学堂2018DP-图论精讲班-学习笔记/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://yoursite.com" target="_blank">默思·朸安</a>！</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/学习笔记/">学习笔记</a></div><nav id="pagination"><div class="next-post pull-right"><a href="/2018/07/13/Goodbye/"><span>Goodbye</span><i class="fa fa-chevron-right"></i></a></div></nav><div class="post-adv"></div></div></div><footer><div class="layout" id="footer"><div class="copyright">&copy;2018 By MorsLin</div><div class="framework-info"><span>驱动 - </span><a href="http://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 - </span><a href="https://github.com/Molunerfinn/hexo-theme-melody"><span>Melody</span></a></div><div class="footer_custom_text"><p id="hitokoto">:D 获取中...</p><script src="https://v1.hitokoto.cn/?encode=js&select=%23hitokoto" defer></script></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="/js/third-party/anime.min.js"></script><script src="/js/third-party/jquery.min.js"></script><script src="/js/third-party/jquery.fancybox.min.js"></script><script src="/js/third-party/velocity.min.js"></script><script src="/js/third-party/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.5.6"></script><script src="/js/fancybox.js?version=1.5.6"></script><script src="/js/sidebar.js?version=1.5.6"></script><script src="/js/copy.js?version=1.5.6"></script><script src="/js/fireworks.js?version=1.5.6"></script><script src="/js/transition.js?version=1.5.6"></script><script src="/js/scroll.js?version=1.5.6"></script><script src="/js/head.js?version=1.5.6"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  }
+});
+</script><script type="text/x-mathjax-config">MathJax.Hub.Queue(function() {
+  var all = MathJax.Hub.getAllJax(), i;
+  for (i=0; i < all.length; i += 1) {
+    all[i].SourceElement().parentNode.className += ' has-jax';
+  }
+});
+</script><script src="https://cdn.jsdelivr.net/npm/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script src="/js/search/local-search.js"></script><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章"></div></div></div><hr><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a href="https://github.com/wzpan/hexo-generator-search" style="color:#49B1F5;">hexo-generator-search</a>
+ <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fa fa-times"></i></span></div><div class="search-mask"></div></body></html>

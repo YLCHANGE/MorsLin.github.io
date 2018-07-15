@@ -3,6 +3,29 @@
   
     
     <entry>
+      <title>清北学堂2018DP&amp;图论精讲班 学习笔记</title>
+      <link href="/2018/07/15/%E6%B8%85%E5%8C%97%E5%AD%A6%E5%A0%822018DP-%E5%9B%BE%E8%AE%BA%E7%B2%BE%E8%AE%B2%E7%8F%AD-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+      <url>/2018/07/15/%E6%B8%85%E5%8C%97%E5%AD%A6%E5%A0%822018DP-%E5%9B%BE%E8%AE%BA%E7%B2%BE%E8%AE%B2%E7%8F%AD-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
+      <content type="html"><![CDATA[<h1 id="Day1"><a href="#Day1" class="headerlink" title="Day1"></a>Day1</h1><h2 id="上午"><a href="#上午" class="headerlink" title="上午"></a>上午</h2><p>讲的挺基础的……不过还是有些地方不太明白</p><h3 id="例1"><a href="#例1" class="headerlink" title="例1"></a>例1</h3><p> 给定一个数n，求将n划分成若干个正整数的方案数。</p><h3 id="例2"><a href="#例2" class="headerlink" title="例2"></a>例2</h3><p> 数字三角形</p><h3 id="例7"><a href="#例7" class="headerlink" title="例7"></a>例7</h3><p>最长不下降子序列</p><p><strong>以上太过于基础，不做深入讨论</strong></p><hr><h3 id="例3"><a href="#例3" class="headerlink" title="例3"></a>例3</h3><p>给定一个数n，求将n划分成若干个正整数的方案数。</p><p>题解：</p><ul><li><p>定义状态<br>dp[i][j]表示用不超过j的数来组成i</p></li><li><p>状态转移<br>$i<j\quad dp[i][j]="dp[i][i]$" $i="j\quad">j\quad dp[i][j]=dp[i-j][j-1]+dp[i][j-1]$</j\quad></p></li></ul><h3 id="例4"><a href="#例4" class="headerlink" title="例4"></a>例4</h3><p>一个人站在楼梯的第一级上，每次他可以向上走1~m级。有某些级楼梯是坏的，不能走上去。而且连续走了k次m级之后你接下来的一步只能走1级。问走到第N级的方案数。</p><p>题解：</p><ul><li><p>定义状态<br>dp[i][j]在第i级台阶上，连续走了j次m级</p></li><li><p>状态转移<br>$\sum<em>{j=1}^{m-1}dp[i+j][0]+=\sum</em>{l=0}^{k-1}dp[i][l]$(我自己按老师的意思写的方程我自己都看不懂……)<br>$dp[i+1][0]+=dp[i][k]$<br>$dp[i+m][l+1]+=f[i][l]\;(l\neq k)$</p></li></ul><h3 id="例5"><a href="#例5" class="headerlink" title="例5"></a>例5</h3><p><a href="http://codeforces.com/problemset/problem/467/C" target="_blank" rel="noopener">Codeforces 467C George and Job</a></p><p>给定一个长度为n的序列，从序列中选出k个不重叠且连续的m个数，要求和最大。<br>1&lt;=m*k&lt;=n&lt;=5000</p><p>题解：</p><ul><li><p>定义状态<br>sum[]为前缀和，dp[i][j]选了j段，以i为结尾</p></li><li><p>状态转移<br>$dp[i][j]=max(dp[i-m][j-1]+sum[i]-sum[i-m],dp[i-1][j])$</p></li></ul><h3 id="例6"><a href="#例6" class="headerlink" title="例6"></a>例6</h3><p><a href="https://www.51nod.com/onlineJudge/questionCode.html#!problemId=1354" target="_blank" rel="noopener">51nod 1354 选数字</a></p><p><strong>不会，全程懵逼</strong></p><h2 id="下午"><a href="#下午" class="headerlink" title="下午"></a>下午</h2><p>考试，估计要爆零……</p><p>嗯，60分，还不错——至少比想象中的高</p><h4 id="考试题目"><a href="#考试题目" class="headerlink" title="考试题目"></a><a href="https://files.cnblogs.com/files/wxl-Ezio/problemset.pdf" target="_blank" rel="noopener">考试题目</a></h4><h4 id="官方题解"><a href="#官方题解" class="headerlink" title="官方题解"></a><a href="https://files.cnblogs.com/files/wxl-Ezio/sol.pdf" target="_blank" rel="noopener">官方题解</a></h4><h3 id="吐槽"><a href="#吐槽" class="headerlink" title="吐槽"></a>吐槽</h3><ul><li><p>T1<br>只能说我太菜了，根本不会DP，爆搜+数据特判，40分滚粗</p></li><li><p>T2<br>我会最短路，怎么才20分？好吧，那30%$k=1$的测试点我承认我删边删错了。题目是双向边，我也是按双向边存的，结果删的时候只删了一条边……</p></li><li><p>T3<br>不会，讲了也不会 (｀＾´)ノ</p></li></ul>]]></content>
+      
+      <categories>
+          
+          <category> 培训 </category>
+          
+          <category> 清北学堂 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 学习笔记 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>Goodbye</title>
       <link href="/2018/07/13/Goodbye/"/>
       <url>/2018/07/13/Goodbye/</url>
