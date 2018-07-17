@@ -193,7 +193,7 @@
 <li><p>如：<br>$n=124056$ 第一位为0~1<br>考虑第一位为0时，那么之后的位可以随便选，对答案贡献$f[5]$，而这一位的0不贡献答案<br>第一位为1时，那么之后的为不能随便选，只有$24057$种选法。这一位对答案的贡献是$24057$，之后继续计算后五位对答案的贡献<br>此时第一位固定为$1$。第二位可以是$0/1/2$。<br>是0时，第2位不贡献答案，但是后面4位随便选。贡献$f[4]$<br>是1时，第2位贡献答案为$10^4$。后面4位随便选，贡献$f[4]$<br>是2时，第2位不贡献答案，后面4位不能随便选，答案不能直接计算，继续固定第二位，看第3位的数值<br>……<br>直到最后一位。</p>
 </li>
 </ul>
-<h3 id="例2-3"><a href="#例2-3" class="headerlink" title="例2"></a>例2</h3><p><a href="http://acm.hdu.edu.cn/showproblem.php?pid=3652" target="_blank" rel="noopener">hdu 3652 B-number</a></p>
+<h3 id="例2-3"><a href="#例2-3" class="headerlink" title="例2"></a>例2</h3><p><a href="http://acm.hdu.edu.cn/showproblem.php?pid=3652" target="_blank" rel="noopener">Hdu 3652 B-number</a></p>
 <p>找出1~n范围内含有13并且能被13整除的数字的个数<br>$n&lt;=10^{17}$</p>
 <p><strong>我太菜了，van♂全不会</strong></p>
 <p>背包和数位就到此结束了</p>
@@ -231,7 +231,7 @@
 <h2 id="例1-5"><a href="#例1-5" class="headerlink" title="例1"></a>例1</h2><p>斐波那契数列<br>$f[1]=f[2]=1$<br>$f[n]=f[n-1]+f<a href="n &gt;= 3">n-2</a>$<br>求$f[n]\mod(10^9+7)$<br>$n&lt;=10^{18}$</p>
 <p>题解：</p>
 <p>矩阵快速幂加速，不解释</p>
-<h2 id="例2-5"><a href="#例2-5" class="headerlink" title="例2"></a>例2</h2><p><a href="http://codeforces.com/problemset/problem/821/E" target="_blank" rel="noopener">CF821E Okabe and El Psy Kongroo</a></p>
+<h2 id="例2-5"><a href="#例2-5" class="headerlink" title="例2"></a>例2</h2><p><a href="http://codeforces.com/problemset/problem/821/E" target="_blank" rel="noopener">Codeforces 821E Okabe and El Psy Kongroo</a></p>
 <p>你在$(0,0)$。在$(x,y)$时，每次移动可以到达$(x+1,y+1),(x+1,y),(x+1,y-1)$，平面上有$n$条线段，平行于$x$轴，参数为$a_i,b_i,c_i$，表示在$(a_i,c_i)$到$(b_i,c_i)$的一条线段，保证$b[i]=a[i+1]$，要求你一直在线段的下方且在$x$轴上方，即$a_i {&lt;= } x { &lt;=} b_i$时，$0 { &lt;= }y{ &lt;= }c_i$。问到达$(k,0)$的方案数，对$10^9+7$取模。<br>$n&lt;=100,k&lt;=10^{18},ci&lt;=15$</p>
 <p>题解：</p>
 <p>实现不是很会，但明白了做法，思路确实很神奇</p>
