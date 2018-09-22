@@ -3,6 +3,29 @@
   
     
     <entry>
+      <title>HNOI2003 消防局的设立</title>
+      <link href="/2018/09/18/hnoi2003-xfjdsl/"/>
+      <url>/2018/09/18/hnoi2003-xfjdsl/</url>
+      <content type="html"><![CDATA[<p><a href="https://www.luogu.org/problemnew/show/P2279" target="_blank" rel="noopener"><strong>题目传送门</strong></a></p><p>据说是一道树形DP，这么高级的么……<br>然而贪心水过了……</p><hr><p>因为消防局可以扑灭与它距离<strong>不超过2</strong>的基地的火灾，所以我们可以每次找出深度最大的点（用堆维护），然后在他的爷爷节点（没有爷爷就在父亲节点）建一个消防局<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> k=<span class="number">0</span>; <span class="keyword">char</span> c=getchar();</span><br><span class="line">    <span class="keyword">for</span>(;c&lt;<span class="string">'0'</span>||c&gt;<span class="string">'9'</span>;) c=getchar();</span><br><span class="line">    <span class="keyword">for</span>(;c&gt;=<span class="string">'0'</span>&amp;&amp;c&lt;=<span class="string">'9'</span>;c=getchar())</span><br><span class="line">      k=k*<span class="number">10</span>+c<span class="number">-48</span>;</span><br><span class="line">    <span class="keyword">return</span> k;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">zzz</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> t,nex;</span><br><span class="line">&#125;e[<span class="number">1010</span>&lt;&lt;<span class="number">1</span>]; <span class="keyword">int</span> head[<span class="number">1010</span>],tot;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123;</span><br><span class="line">    e[++tot].t=y;</span><br><span class="line">    e[tot].nex=head[x];</span><br><span class="line">    head[x]=tot;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> fa[<span class="number">1010</span>],vis[<span class="number">1010</span>],deth[<span class="number">1010</span>],ans;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> now)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=head[now];i;i=e[i].nex)</span><br><span class="line">      <span class="keyword">if</span>(e[i].t!=fa[now])&#123;</span><br><span class="line">          fa[e[i].t]=now; deth[e[i].t]=deth[now]+<span class="number">1</span>;</span><br><span class="line">          dfs(e[i].t);</span><br><span class="line">      &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">hhh</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> k,deth;</span><br><span class="line">    <span class="keyword">bool</span> <span class="keyword">operator</span> &lt; (<span class="keyword">const</span> hhh &amp;y) <span class="keyword">const</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> deth &lt; y.deth;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">priority_queue &lt;hhh&gt; q;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n=read();</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        <span class="keyword">int</span> x=read(); add(i,x); add(x,i);</span><br><span class="line">    &#125;</span><br><span class="line">    dfs(<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) q.push(hhh&#123;i,deth[i]&#125;);</span><br><span class="line">    <span class="keyword">while</span>(!q.empty())&#123;</span><br><span class="line">    <span class="keyword">int</span> k=q.top().k; q.pop();</span><br><span class="line">    <span class="keyword">if</span>(vis[k]) <span class="keyword">continue</span>;</span><br><span class="line">    ans++;</span><br><span class="line">        <span class="keyword">if</span>(fa[fa[k]])&#123;</span><br><span class="line">            vis[fa[fa[k]]]=<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=head[fa[fa[k]]];i;i=e[i].nex)&#123;</span><br><span class="line">                vis[e[i].t]=<span class="number">1</span>;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> j=head[e[i].t];j;j=e[j].nex) vis[e[j].t]=<span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            vis[fa[k]]=<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=head[fa[k]];i;i=e[i].nex) vis[e[i].t]=<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;ans;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>]]></content>
+      
+      <categories>
+          
+          <category> 题解 </category>
+          
+          <category> 各省省选 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 贪心 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>Luogu P1020 关路灯</title>
       <link href="/2018/09/14/luogu-p1020-gld/"/>
       <url>/2018/09/14/luogu-p1020-gld/</url>
@@ -26,31 +49,6 @@
     </entry>
     
     <entry>
-      <title>Noip2009 最优贸易</title>
-      <link href="/2018/09/13/noip2009-zymy/"/>
-      <url>/2018/09/13/noip2009-zymy/</url>
-      <content type="html"><![CDATA[<p><a href="https://www.luogu.org/problemnew/show/P1073" target="_blank" rel="noopener"><strong>题目传送门</strong></a></p><p>算法简单，考察思路</p><hr><p>题目意思是找出两个点$a,b$，使得$a,b$是联通的且$a$在$b$的前面，求$(a-b)$的最大值</p><p>对于这道题目，我们可以先正着跑一遍SPFA（嗯，没错，它不卡SPFA）求出每个点之前的点的最小值，然后再反着跑一遍SPFA，求出每个点之后的最大值，之后枚举每个点，用最大值减最小再取$max$就可以了</p><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">zzz</span>&#123;</span></span><br><span class="line"><span class="keyword">int</span> t,nex;</span><br><span class="line">&#125;e[<span class="number">500010</span>&lt;&lt;<span class="number">1</span>]; <span class="keyword">int</span> head[<span class="number">100010</span>],tot;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123;</span><br><span class="line">e[++tot].t=y;</span><br><span class="line">e[tot].nex=head[x];</span><br><span class="line">head[x]=tot;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">zzz2</span>&#123;</span></span><br><span class="line"><span class="keyword">int</span> t,nex;</span><br><span class="line">&#125;e2[<span class="number">500010</span>&lt;&lt;<span class="number">1</span>]; <span class="keyword">int</span> head2[<span class="number">100010</span>],tot2;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add2</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123;</span><br><span class="line">e2[++tot2].t=y;</span><br><span class="line">e2[tot2].nex=head2[x];</span><br><span class="line">head2[x]=tot2;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> a[<span class="number">100010</span>];</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">hhh</span>&#123;</span></span><br><span class="line"><span class="keyword">int</span> maxn,minn;</span><br><span class="line">&#125;dis[<span class="number">100010</span>]; <span class="keyword">bool</span> vis[<span class="number">100010</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="keyword">int</span> k=<span class="number">0</span>; <span class="keyword">char</span> c=getchar();</span><br><span class="line"><span class="keyword">for</span>(;c&lt;<span class="string">'0'</span>||c&gt;<span class="string">'9'</span>;) c=getchar();</span><br><span class="line"><span class="keyword">for</span>(;c&gt;=<span class="string">'0'</span>&amp;&amp;c&lt;=<span class="string">'9'</span>;c=getchar())</span><br><span class="line">  k=k*<span class="number">10</span>+c<span class="number">-48</span>;</span><br><span class="line"><span class="keyword">return</span> k;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">SPFA</span><span class="params">(<span class="keyword">int</span> s)</span></span>&#123;</span><br><span class="line"><span class="built_in">queue</span> &lt;<span class="keyword">int</span>&gt; q;</span><br><span class="line">q.push(s);</span><br><span class="line"><span class="keyword">while</span>(!q.empty())&#123;</span><br><span class="line"><span class="keyword">int</span> k=q.front(); q.pop(); vis[k]=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=head[k];i;i=e[i].nex)&#123;</span><br><span class="line"><span class="keyword">if</span>(dis[e[i].t].minn&gt;a[k])&#123;</span><br><span class="line">dis[e[i].t].minn=a[k];</span><br><span class="line"><span class="keyword">if</span>(!vis[e[i].t]) vis[e[i].t]=<span class="number">1</span>, q.push(e[i].t);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">SPFA2</span><span class="params">(<span class="keyword">int</span> s)</span></span>&#123;</span><br><span class="line"><span class="built_in">queue</span> &lt;<span class="keyword">int</span>&gt; q;</span><br><span class="line">q.push(s);</span><br><span class="line"><span class="keyword">while</span>(!q.empty())&#123;</span><br><span class="line"><span class="keyword">int</span> k=q.front(); q.pop(); vis[k]=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=head2[k];i;i=e2[i].nex)&#123;</span><br><span class="line"><span class="keyword">if</span>(dis[e2[i].t].maxn&lt;a[k])&#123;</span><br><span class="line">dis[e2[i].t].maxn=a[k];</span><br><span class="line"><span class="keyword">if</span>(!vis[e2[i].t]) vis[e2[i].t]=<span class="number">1</span>, q.push(e2[i].t);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> ans;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="keyword">int</span> n=read(),m=read();</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) a[i]=read();</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)&#123;</span><br><span class="line"><span class="keyword">int</span> x=read(),y=read(),z=read();</span><br><span class="line"><span class="keyword">if</span>(z==<span class="number">1</span>) add(x,y),add2(y,x);</span><br><span class="line"><span class="keyword">else</span> add(x,y), add(y,x), add2(x,y), add2(y,x);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) dis[i].minn=a[i];</span><br><span class="line">SPFA(<span class="number">1</span>); <span class="built_in">memset</span>(vis,<span class="number">0</span>,<span class="keyword">sizeof</span>(vis)); SPFA2(n);</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) ans=max(dis[i].maxn-dis[i].minn,ans);</span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;ans;</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      
-      <categories>
-          
-          <category> 题解 </category>
-          
-          <category> Noip </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 图论 </tag>
-            
-            <tag> 搜索 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    <entry>
       <title>Noip2004 虫食算</title>
       <link href="/2018/09/09/noip2004-css/"/>
       <url>/2018/09/09/noip2004-css/</url>
@@ -60,7 +58,7 @@
           
           <category> 题解 </category>
           
-          <category> Noips </category>
+          <category> Noip </category>
           
       </categories>
       
@@ -363,7 +361,7 @@
           
           <category> 题解 </category>
           
-          <category> Noi </category>
+          <category> NOI </category>
           
       </categories>
       
@@ -388,7 +386,7 @@
           
           <category> 题解 </category>
           
-          <category> Noi </category>
+          <category> NOI </category>
           
       </categories>
       
